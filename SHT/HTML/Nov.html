@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Sht二手交易平台</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<style>
+			span {
+				font-family:微软雅黑;
+				margin:0px;
+				padding:0px;
+				font-size:18px;
+			}
+			body {
+				background:#92ffff;
+			}
+		
+			#nav_main {
+				height:50px;	
+			}
+		
+			.container {
+				width:1300px;
+			}
+			/*登录模块*/
+			.panel {
+				width:300px;
+				height:250px;
+				position:relative;
+				margin: 0 auto;
+			}
+			.modal-md {
+				width:350px;
+				height:300px;
+			}
+			.modal-body .checkbox {
+				float:left;
+				margin-top:3px;
+			}
+			.modal-body p a {
+				float:right;
+			}
+			.modal-body p {
+				font-size:12px;	
+			}
+			.help-block {
+				font-size:12px;	
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<nav class="navbar navbar-inverse navbar-fixed-top" id="nav_main">
+				<div class="container">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<a href="" class="navbar-brand">
+								<img src="" alt="Brand">
+							</a>
+							<button class="navbar-toggle collapsed" data-toggle="collapse" 
+							data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						</div>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-right" data-toggle="dropdown">
+								<li id="cart"><a class="btn btn-link" href="#"><span class="glyphicon glyphicon-envelope"></span></a></li>
+								<li id="login"><a class="btn btn-link" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span></a></li>
+							</ul>
+							<form class="navbar-form navbar-right">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="搜索商品">
+								</div>
+								<a class="btn btn-link"><span class="glyphicon glyphicon-search"></span></a>
+							</form>
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="">闲置手机</a></li>
+								<li><a href="">闲置电脑</a></li>
+								<li><a href="">数码配件</a></li>
+								<li><a href="">图书教材</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+			
+
+						<!-- 登录模块 -->
+			<div class="modal fade" id="myModal">
+				<div class="modal-dialog modal-md">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div class="close" data-dismiss="modal">&times;</div>
+							<h3 class="modal-title">登录账号</h3>	
+						</div>
+						<div class="modal-body">
+							<div class="panel">
+								<form action="" method="post">
+									<div class="form-group">
+										<input type="text" class="form-control" name="username" id="username" placeholder="手机号码">
+										<!-- <span class="help-block">*输入格式错误</span> -->
+									</div>
+									<div class="form-group">
+										<input type="password" class="form-control" name="password" id="password" placeholder="密码">
+										<!-- <span class="help-block">*密码错误</span> -->
+									</div>
+									<p>
+										<input type="checkbox" class="checkbox" value="">记住密码
+										<a href="#">忘记密码</a>
+									</p>		
+									<div class="form-group">
+										<input type="submit" value="登录" class="form-control btn btn-primary">
+									</div>
+									<p>
+										<a href="sign.html">立即注册</a>
+									</p>						
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>	
+	</body>
+	<script>
+		//-----------------登录模块----------------------------------
+		$('form .form-group').keyup(function(){
+			$('#username').focusout(function(){
+				username = $('#username').val();
+				if(username.length <5  || username.length > 22) {
+					$('.help-block:first').css({'display':'block'});
+				}
+			});	
+			$('#password').focusout(function(){
+				username = $('#password').val();
+				if(username.length==0) {
+					$('.help-block:last').css({'display':'block'});
+				}
+			});
+				
+		});
+	</script>
+</html>

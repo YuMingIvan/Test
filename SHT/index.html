@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Sht二手交易平台</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<style>
+		span {
+			font-family:微软雅黑;
+			margin:0px;
+			padding:0px;
+			font-size:18px;
+		}	
+		#nav_main {
+			height:50px;	
+		}
+		.container {
+			width:1300px;
+		}
+		.navbar-collapse #login .login-tip {
+			height:150px;
+			width:120px;
+			margin-top:50px;
+			position:absolute;
+			top:0px;
+			right:0px;
+			background:#fff;
+			box-shadow:0px 2px 2px 2px #ccc;
+			text-align:center;
+			display:none;
+		}
+		.navbar-collapse #login .login-tip li {
+			margin:15px auto;
+		}
+		.navbar-collapse #login .login-tip li a {
+			text-decoration:none;
+			color:#333;
+		}
+		
+		#mycarousel .carousel-inner {
+			margin-top:50px;
+			width:1270px;
+			height:450px;
+			position:relative;
+		}
+		.menu_main {
+			height:100%;
+			width:600px;
+			position:absolute;
+			top:0px;
+			left:0px;
+		}
+		.menu_left {
+			height:100%;
+			width:180px;
+			position:absolute;
+			background:#333333;
+			padding:33px 0px 0px 0px;
+			top:0px;
+			left:0px;
+		}		
+		.menu_left ul li {
+			line-height:55px;
+			padding-left:50px; 			
+		}
+		.menu_left ul li span{
+			color:#fff;
+		}
+		.menu_left ul li:hover {
+			cursor:pointer;
+		}
+		.menu_right {
+			width:480px;
+			height:100%;
+			background:#fff;
+			position:absolute;
+			top: 0px;
+			left:180px;
+			padding:10px;
+			color:#333333;
+			display:none;
+		}
+		.menu_right a {
+			color:#000;
+			line-height:30px;
+			margin:10px;
+			width:60px;
+			height:30px;
+		}
+		.shopMain {
+			width:1270px;
+			height:700px;
+			margin-top:40px;
+			
+		}
+		.shopTitle {
+			width:1270px;
+			height:40px;
+			margin-bottom:10px;
+		}
+		.shopBody {
+			width:1270px;
+			height:660px;
+			background-color:#F8F8FF;
+		}
+		#sub1 {
+			font-weight:bold;
+			font-size:24px;
+			line-height:50px;
+			float:left;
+			color:#333333;
+		}
+		#sub2 {
+			font-size:30px;
+			line-height:50px;
+			float:right;
+			color:#333333;
+		}
+		.shop {
+			background:#fff;
+			width:220px;
+			height:300px;
+			margin:2px 0px 28px 28px;
+			float:left;
+			text-align:center;
+		}
+		.shop:hover {
+			cursor:pointer;
+			box-shadow:0px 5px 5px 5px #ccc;
+			margin-top:2px;
+		}
+		.shop .title {
+			padding-top:5px;
+			display: block;
+			text-align:center;
+			font-size:16px;
+		}
+		.shop .desc {
+			margin: 0 10px 10px;
+			height: 18px;
+			font-size: 12px;
+			text-align: center;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			overflow: hidden;
+			color: #b0b0b0;
+		}
+		.shop .price {
+			margin: 0 auto;
+			text-align: center;
+			color: #ff6700;
+		}	
+		.shop .shop_img {
+			margin-top:20px;
+		}
+		/*登录模块*/
+		.panel {
+			width:300px;
+			height:250px;
+			position:relative;
+			margin: 0 auto;
+		}
+		.modal-md {
+			width:350px;
+			height:300px;
+		}
+		.modal-body .checkbox {
+			float:left;
+			margin-top:3px;
+		}
+		.modal-body p a {
+			float:right;
+		}
+		.modal-body p {
+			font-size:12px;	
+		}
+		.help-block {
+			font-size:12px;	
+			color:red;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<nav class="navbar navbar-inverse navbar-fixed-top" id="nav_main">
+				<div class="container">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<a href="#" class="navbar-brand">
+								<img src="" alt="Brand">
+							</a>
+							<button class="navbar-toggle collapsed" data-toggle="collapse" 
+							data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						</div>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-right">
+								<li id="cart"><a class="btn btn-link" href="HTML/personal.html"><span class="glyphicon glyphicon-envelope"><span class="badge">6</span></span></a></li>
+								<li id="login">
+									<a class="btn btn-link" href="HTML/personal.html">
+										<!--<span class="glyphicon glyphicon-user"></span>---->
+										<img src="images/customer/001.jpg" alt="" style="height:26px;width:26px;margin-top:-5px;" class="img-circle">
+									</a>
+									<div class="login-tip">
+										<ul class="list-unstyled">
+											<li><a href="HTML/personal.html">我要发布</a></li>
+											<li><a href="HTML/personal.html">在售宝贝</a></li>
+											<li><a href="HTML/personal.html">我的收藏</a></li>
+											<li><a href="HTML/personal.html">退出</a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+							<form class="navbar-form navbar-right">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="搜索商品">
+								</div>
+								<a class="btn btn-link"><span class="glyphicon glyphicon-search"></span></a>
+							</form>
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="HTML/phone.html" target=_blank>闲置手机</a></li>
+								<li><a href="HTML/computer.html" target=_blank>闲置电脑</a></li>
+								<li><a href="HTML/fittings.html" target=_blank>数码配件</a></li>
+								<li><a href="HTML/book.html" target=_blank>图书教材</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<div class="carousel slide" id="mycarousel" data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="item active">
+						<img src="images/01.jpg" width="100%" height="450px" alt="">
+					</div>
+					<div class="item">
+						<img src="images/02.jpg" width="100%" height="450px" alt="">
+					</div>
+					<div class="item">
+						<img src="images/03.jpg" width="100%" height="450px" alt="">
+					</div>
+				</div>
+				<ol class="carousel-indicators">
+					<li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#mycarousel" data-slide-to="1"></li>
+					<li data-target="#mycarousel" data-slide-to="2"></li>
+				</ol>
+				<div class="menu_main">
+					<div class="menu_left">
+						<ul class="list-unstyled">
+							<li>
+								<span>手机数码</span>
+								<div class="menu_right">
+									<dl class="dl-horizontal">
+										<dt style="text-align:center;"><a href="HTML/phone.html">二手手机</a></dt>
+										<dd>
+											<a href="#">苹果</a>
+											<a href="#">三星</a>
+											<a href="#">小米</a>
+											<a href="#">华为</a>
+											<a href="#">OPPO</a>
+											<a href="#">vivo</a>
+											<a href="#">魅族</a>
+											<a href="#">努比亚</a>
+											<a href="#">中兴</a>
+											<a href="#">一加</a>
+											<a href="#">360手机</a>
+											<a href="#">酷派</a>
+											<a href="#">乐视</a>
+											<a href="#">其他</a>
+										</dd>
+										<hr>
+										<dt style="text-align:center;"><a href="HTML/digital.html">二手数码</a></dt>
+										<dd>
+											<a href="#">单反</a>
+											<a href="#">微单相机</a>
+											<a href="#">卡片相机</a>
+											<a href="#">摄像机</a>
+											<a href="#">电子书</a>
+											<a href="#">录音笔</a>
+											<a href="#">游戏机</a>
+											<a href="#">智能手表</a>
+											<a href="#">智能手环</a>
+											<a href="#">MP3</a>
+											<a href="#">MP4</a>										
+											<a href="#">其他</a>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li>
+								<span>电脑电器</span>
+								<div class="menu_right">
+									<dl class="dl-horizontal">
+										<dt style="text-align:center;"><a href="HTML/computer.html">笔记本电脑</a></dt>
+										<dd>
+											<a href="#">苹果</a>
+											<a href="#">华硕</a>
+											<a href="#">戴尔</a>
+											<a href="#">惠普</a>
+											<a href="#">三星</a>
+											<a href="#">宏碁</a>
+											<a href="#">其他</a>
+										</dd>
+										<hr>
+										<dt style="text-align:center;"><a href="HTML/computer.html">平板电脑</a></dt>
+										<dd>
+											<a href="#">苹果</a>
+											<a href="#">三星</a>
+											<a href="#">联想</a>
+											<a href="#">华为</a>
+											<a href="#">小米</a>
+											<a href="#">诺基亚</a>
+											<a href="#">爱国者</a>
+											<a href="#">其他</a>
+										</dd>
+										<hr>
+										<dt style="text-align:center;"><a href="HTML/electical.html">二手家电</a></dt>
+										<dd>
+											<a href="#">电视机</a>
+											<a href="#">空气净化器</a>
+											<a href="#">空调</a>
+											<a href="#">洗衣机</a>
+											<a href="#">冰箱</a>
+											<a href="#">油烟机</a>
+											<a href="#">热水器</a>
+											<a href="#">其他</a>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li>
+								<span>数码配件</span>
+								<div class="menu_right">
+									<dl class="dl-horizontal">
+										<dt style="text-align:center;"><a href="HTML/fittings.html">手机配件</a></dt>
+										<dd>
+											<a href="#">移动电源</a>
+											<a href="#">手机贴膜</a>
+											<a href="#">手机壳</a>
+											<a href="#">耳机</a>
+											<a href="#">数据线</a>
+											<a href="#">手机支架</a>
+											<a href="#">自拍神器</a>					
+											<a href="#">其他</a>
+										</dd>
+										<hr>
+										<dt style="text-align:center;"><a href="HTML/fittings.html">电脑配件</a></dt>
+										<dd>
+											<a href="#">显卡</a>
+											<a href="#">网卡</a>
+											<a href="#">CPU</a>
+											<a href="#">主板</a>
+											<a href="#">硬盘</a>
+											<a href="#">光驱</a>
+											<a href="#">内存条</a>
+											<a href="#">电源</a>
+											<a href="#">其他</a>
+										</dd>
+										<hr>
+										<dt style="text-align:center;"><a href="HTML/fittings.html">外设设备</a></dt>
+										<dd>
+											<a href="#">移动硬盘</a>
+											<a href="#">路由器</a>
+											<a href="#">鼠标/键盘</a>										
+											<a href="#">U盘</a>
+											<a href="#">摄像头</a>
+											<a href="#">音响</a>
+											<a href="#">鼠标垫</a>
+											<a href="#">其他</a>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li>
+								<span>图书教材</span>
+								<div class="menu_right">
+									<dl class="dl-horizontal">
+										<dt style="text-align:center;"><a href="HTML/book.html">少儿图书</a></dt>
+										<dd>
+											<a href="#">儿童文本</a>
+											<a href="#">绘本</a>
+											<a href="#">科普</a>
+											<a href="#">幼儿启蒙</a>
+											<a href="#">手工游戏</a>
+											<a href="#">智力开发</a>
+											<a href="#">动漫卡通</a>
+											<a href="#">书法</a>
+											<a href="#">少儿英语</a>
+											<a href="#">其他</a>
+										</dd>
+										<hr>
+										<dt style="text-align:center;"><a href="HTML/book.html">考试/教材教辅</a></dt>
+										<dd>
+											<a href="#">中小学教辅</a>
+											<a href="#">外语学习</a>
+											<a href="#">英语四六级</a>
+											<a href="#">大中专教材</a>
+											<a href="#">公务员考试</a>
+											<a href="#">考研</a>
+											<a href="#">字典词典</a>
+											<a href="#">大学生教材</a>
+											<a href="#">其他</a>
+										</dd>
+										<hr>
+										<dt style="text-align:center;"><a href="HTML/book.html">人文社科</a></dt>
+										<dd>
+											<a href="#">历史</a>
+											<a href="#">心理学</a>
+											<a href="#">国学古籍</a>										
+											<a href="#">哲学宗教</a>
+											<a href="#">社会科学</a>
+											<a href="#">政治军事</a>
+											<a href="#">文学小说</a>
+											<a href="#">传记</a>
+											<a href="#">科普读物</a>										
+											<a href="#">期刊杂志</a>
+											<a href="#">漫画</a>
+											<a href="#">电子书</a>
+											<a href="#">其他</a>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li>
+								<span>衣服鞋帽</span>
+								<div class="menu_right">
+									<dl class="dl-horizontal">
+										<dt style="text-align:center;"><a href="HTML/colthes.html">衣服</a></dt>
+										<dd>
+											<a href="#">T恤</a>
+											<a href="#">衬衫</a>
+											<a href="#">裙子/连衣裙</a>
+											<a href="#">短裤</a>
+											<a href="#">西装</a>
+											<a href="#">毛衣</a>
+											<a href="#">羽绒服/棉衣</a>
+											<a href="#">婚纱</a>
+											<a href="#">童装</a>
+											<a href="#">其他</a>
+										</dd>
+										<hr>
+										<dt style="text-align:center;"><a href="HTML/colthes.html">鞋子</a></dt>
+										<dd>
+											<a href="#">休闲鞋</a>
+											<a href="#">运动鞋</a>
+											<a href="#">帆布鞋</a>
+											<a href="#">皮鞋</a>
+											<a href="#">靴子</a>
+											<a href="#">登山鞋</a>
+											<a href="#">高跟鞋</a>
+											<a href="#">板鞋</a>
+											<a href="#">其他</a>
+										</dd>
+										<hr>
+										<dt style="text-align:center;"><a href="HTML/colthes.html">配饰</a></dt>
+										<dd>
+											<a href="#">帽子</a>
+											<a href="#">围巾</a>
+											<a href="#">领带</a>										
+											<a href="#">手套</a>
+											<a href="#">腰带</a>
+											<a href="#">其他</a>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li>
+								<span>户外运动</span>
+								<div class="menu_right">
+									<dl class="dl-horizontal">
+										<dt style="text-align:center;"><a href="HTML/sport.html">户外用品</a></dt>
+										<dd>
+											<a href="#">帐篷</a>
+											<a href="#">睡袋</a>
+											<a href="#">冲锋衣/库</a>
+											<a href="#">户外背包</a>
+											<a href="#">户外照明</a>
+											<a href="#">望远镜</a>
+											<a href="#">其他</a>
+										</dd>
+										<hr>
+										<dt style="text-align:center;"><a href="HTML/sport.html">运动用品</a></dt>
+										<dd>
+											<a href="#">跑步机</a>
+											<a href="#">健身机</a>
+											<a href="#">哑铃</a>
+											<a href="#">拉力器</a>
+											<a href="#">高尔夫球用品</a>
+											<a href="#">网球用品</a>
+											<a href="#">羽毛球用品</a>
+											<a href="#">乒乓球桌</a>
+											<a href="#">足球用品</a>
+											<a href="#">钓鱼用品</a>
+											<a href="#">游泳用品</a>
+											<a href="#">轮滑/滑板</a>
+											<a href="#">其他</a>
+										</dd>
+									</dl>
+								</div>
+							</li>
+							<li>
+								<span>其他</span>
+								<div class="menu_right">
+									<dl class="dl-horizontal">
+										<dt style="text-align:center;"><a href="HTML/other.html">车载设备</a></dt>
+										<dd>
+											<a href="#">倒车雷达</a>
+											<a href="#">车载音响</a>
+											<a href="#">车载冰箱</a>
+											<a href="#">行车记录仪</a>
+											<a href="#">GPS导航仪</a>
+											<a href="#">其他</a>
+										</dd>
+										<hr>
+										<dt style="text-align:center;"><a href="HTML/other.html">二手家具</a></dt>
+										<dd>
+											<a href="#">床</a>
+											<a href="#">床垫</a>
+											<a href="#">沙发</a>
+											<a href="#">柜子</a>
+											<a href="#">桌子</a>
+											<a href="#">椅子/凳子</a>
+											<a href="#">茶几</a>
+											<a href="#">其他</a>
+										</dd>
+										<hr>
+										<dt style="text-align:center;"><a href="HTML/other.html">二手办公</a></dt>
+										<dd>
+											<a href="#">办公桌椅</a>
+											<a href="#">办公耗材</a>
+											<a href="#">办公设备</a>										
+											<a href="#">其他</a>
+										</dd>
+										<hr>
+										<dt style="text-align:center;"><a href="HTML/other.html">生活出行</a></dt>
+										<dd>
+											<a href="#">二手摩托车</a>
+											<a href="#">二手自行车</a>
+											<a href="#">电动车</a>										
+											<a href="#">二手三轮车</a>
+											<a href="#">配件/装备</a>
+											<a href="#">其他</a>
+										</dd>
+									</dl>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="shopMain"><!--手机数码-->
+				<div class="shopTitle">
+					<a href="#" ><span id="sub1">闲置手机</span></a>
+					<a href="HTML/phone.html" ><span id="sub2" class="glyphicon glyphicon-option-horizontal"></span></a>
+				</div>
+				<div class="shopBody">
+					<ul class="list-unstyled">
+						<li class="shop">
+							<div class="shop_img">
+								<a href="HTML/information.html"><img class="" src="images/phone/meizu1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">魅族手机</h4>
+							<p class="desc">全新魅蓝5 支持现金交易</p>
+							<p class="price">￥1500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/phone/360N5.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">360手机N5</h4>
+							<p class="desc">刚从官网上抢的全新</p>
+							<p class="price">￥1799</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/phone/A3010.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">一加3T手机</h4>
+							<p class="desc">全新4G+128G</p>
+							<p class="price">￥3500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/phone/honorNote8.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">华为荣耀Note8</h4>
+							<p class="desc">第一批最新荣耀Note8</p>
+							<p class="price">￥2600</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/phone/lenovo1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">ZUK Z2pro</h4>
+							<p class="desc">4G+128G值得拥有</p>
+							<p class="price">￥3200</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/phone/samsung1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">三星盖乐世5 one</h4>
+							<p class="desc">7成新可以微刀</p>
+							<p class="price">￥1099</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/phone/nubia.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">nubiaZ11</h4>
+							<p class="desc">可以拍星星的手机</p>
+							<p class="price">￥3599</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/phone/oppoA57.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">OPPOA57</h4>
+							<p class="desc">全新，自拍神器</p>
+							<p class="price">￥3200</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/phone/vivoX9.png" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">VIVI手机</h4>
+							<p class="desc">vivoX9你值得拥有</p>
+							<p class="price">￥3299</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/phone/huawei1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">华为meta9</h4>
+							<p class="desc">让你出差更方便</p>
+							<p class="price">￥4200</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="shopMain"><!--电脑电器-->
+				<div class="shopTitle">
+					<a href="#" ><span id="sub1">闲置电脑</span></a>
+					<a href="HTML/computer.html" ><span id="sub2" class="glyphicon glyphicon-option-horizontal"></span></a>
+				</div>
+				<div class="shopBody">
+					<ul class="list-unstyled">
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/computer/GreatWall.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">长城电脑</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/computer/GreatWall.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">长城电脑</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/computer/GreatWall.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">长城电脑</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/computer/GreatWall.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">长城电脑</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/computer/GreatWall.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">长城电脑</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/computer/GreatWall.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">长城电脑</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/computer/GreatWall.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">长城电脑</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/computer/GreatWall.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">长城电脑</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/computer/GreatWall.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">长城电脑</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/computer/GreatWall.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">长城电脑</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1500</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="shopMain"><!--数码配件-->
+				<div class="shopTitle">
+					<a href="#" ><span id="sub1">数码配件</span></a>
+					<a href="HTML/fittings.html" ><span id="sub2" class="glyphicon glyphicon-option-horizontal"></span></a>
+				</div>
+				<div class="shopBody">
+					<ul class="list-unstyled">
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/life/001.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">摄像头</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1800</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/life/001.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">摄像头</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1800</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/life/001.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">摄像头</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1800</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/life/001.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">摄像头</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1800</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/life/001.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">摄像头</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1800</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/life/001.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">摄像头</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1800</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/life/001.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">摄像头</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1800</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/life/001.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">摄像头</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1800</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/life/001.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">摄像头</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1800</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/life/001.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">摄像头</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥1800</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div class="shopMain"><!--图书教材-->
+				<div class="shopTitle">
+					<a href="#" ><span id="sub1">图书教材</span></a>
+					<a href="HTML/book.html" ><span id="sub2" class="glyphicon glyphicon-option-horizontal"></span></a>
+				</div>
+				<div class="shopBody">
+					<ul class="list-unstyled">
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/book/1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">Java疯狂讲义</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥60</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/book/1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">Java疯狂讲义</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥60</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/book/1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">Java疯狂讲义</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥60</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/book/1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">Java疯狂讲义</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥60</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/book/1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">Java疯狂讲义</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥60</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/book/1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">Java疯狂讲义</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥60</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/book/1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">Java疯狂讲义</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥60</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/book/1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">Java疯狂讲义</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥60</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/book/1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">Java疯狂讲义</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥60</p>
+						</li><li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="images/book/1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">Java疯狂讲义</h4>
+							<p class="desc">全新 支持现金交易</p>
+							<p class="price">￥60</p>
+						</li>
+					</ul>
+				</div>	
+			</div>
+			
+			<!-- 登录模块 -->
+			<div class="modal fade" id="myModal">
+				<div class="modal-dialog modal-md">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div class="close" data-dismiss="modal">&times;</div>
+							<h3 class="modal-title">登录账号</h3>	
+						</div>
+						<div class="modal-body">
+							<div class="panel">
+								<form action="" method="post">
+									<div class="form-group">
+										<input type="text" class="form-control" name="username" id="username" placeholder="手机号码">
+										<!-- <span class="help-block">*输入格式错误</span> -->
+									</div>
+									<div class="form-group">
+										<input type="password" class="form-control" name="password" id="password" placeholder="密码">
+										<!-- <span class="help-block">*密码错误</span> -->
+									</div>
+									<p>
+										<input type="checkbox" class="checkbox" value="">记住密码
+										<a href="#">忘记密码</a>
+									</p>		
+									<div class="form-group">
+										<input type="submit" value="登录" class="form-control btn btn-primary">
+									</div>
+									<p>
+										<a href="HTML/sign.html">立即注册</a>
+									</p>						
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		
+		
+		
+		
+	</body>
+	<script>
+		$('.carousel-caption').hide();//隐藏carousel-caption类的东西
+		$('.item').hover(//鼠标放在上面显示，移开隐藏
+			function()
+			{
+				$(this).find('.carousel-caption').slideDown();
+			},
+			function()
+			{
+				$(this).find('.carousel-caption').slideUp();
+			}
+		);
+		$('.menu_left li').mouseenter(function(){
+			$(this).css({'background':'#fff'});
+			$(this).find('span').css({'color':'#333333'});
+			$('.menu_left li').not($(this)).css({'background':'#333333'});
+			$(this).find('.menu_right').show();
+			$('.menu_right').not($(this)).find('.menu_right').hide();
+		});
+		
+		$('.menu_left li').mouseleave(function(){
+			$(this).find('span').css({'color':'#fff'});
+			$(this).find('.menu_right').hide();
+			$(this).css({'background':'#333333'});
+			
+		});
+		//-----------------登录模块----------------------------------
+		$('form .form-group').keyup(function(){
+			$('#username').focusout(function(){
+				username = $('#username').val();
+				if(username.length <5  || username.length > 22) {
+					$('.help-block:first').css({'display':'block'});
+				}
+			});	
+			$('#password').focusout(function(){
+				username = $('#password').val();
+				if(username.length==0) {
+					$('.help-block:last').css({'display':'block'});
+				}
+			});
+				
+		});
+		//-------------个人中心--------------
+		$('#login').mouseenter(function(){
+			$('.login-tip').show();
+		});
+		$('#login').mouseleave(function(){
+			$('.login-tip').hide();
+		});
+	</script>
+</html>

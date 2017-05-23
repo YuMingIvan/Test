@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Sht二手交易平台</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<style>
+			.button-rows {display:none;}
+			span {
+				font-family:微软雅黑;
+				margin:0px;
+				padding:0px;
+				font-size:18px;
+			}
+			#nav_main {
+				height:50px;	
+			}
+			body {
+				background:#eee;
+			}
+		
+			.container {
+				width:1300px;
+			}
+			.navbar-collapse #login .login-tip {
+				height:150px;
+				width:120px;
+				margin-top:50px;
+				position:absolute;
+				top:0px;
+				right:0px;
+				background:#fff;
+				box-shadow:0px 2px 2px 2px #ccc;
+				text-align:center;
+				display:none;
+			}
+			.navbar-collapse #login .login-tip li {
+				margin:15px auto;
+			}
+			.navbar-collapse #login .login-tip li a {
+				text-decoration:none;
+				color:#333;
+			}
+			.main {
+				width:1300px;
+				height:1000px;
+				background:#eee;
+				overflow:hidden;
+			}
+			.breadcrumb {
+				margin-top:50px;
+				margin-bottom:20px;
+				background:#eee;
+			}
+			.col-md-2, .col-md-10 {
+				padding:5px;
+			}
+			.col-md-2 .panel, .col-md-10 .panel {
+				width:98%;
+				height:1500px;
+				border:none;
+				margin:10px;
+				background:#fff;
+			}
+			.col-md-2 .panel .panel-body{
+				padding:10px;
+				margin:10px;
+			}
+			.col-md-2 .panel .panel-body li {
+				width:80%;
+				font-size:18px;
+				font-weight:bold;
+				text-align:center;
+				margin:0 auto;
+				margin-bottom:20px;
+				cursor:pointer;
+				
+			}
+			.col-md-2 .panel .panel-heading, .col-md-10 .panel .panel-heading {
+				text-align:center;
+				background:#fff;
+				color:#232827;
+				font-weight:bold;
+			}
+			/*分页*/
+			.message-row {
+				padding:15px 15px;
+				display:none;
+			}
+			.div1 {
+				width:1000px;
+				margin:10px;
+			}
+			.userImg {
+				height:350px;
+				width:600px;
+				margin:20px auto;
+				margin-left:50px;
+				display:none;
+			}
+			.userImg .img, .userImg .img img {
+				width:200px;
+				height:200px;
+				margin:10px auto;
+				float:left;
+			}
+			.userText {
+				width:300px;
+				margin:20px auto;
+				float:right;
+				
+			}
+			.userText .table tr td:first-child, .changeInfo form .table tr td:first-child {
+				font-size:18px;
+				font-weight:bold;
+				color:#999;
+			
+			}
+			.userText .table tr td span {
+				font-weight:bold;
+				font-size:16px;
+			}
+			.userText .table tr td, .changeInfo .table tr td {
+				border:block;
+			}
+			.userImg .userText p {
+				float:right;
+			}
+			.changeInfo {
+				width:600px;
+				height:500px;
+				margin:0 auto;
+				margin-left:50px;
+				display:none;
+			}
+			.changeInfo form .table {
+				width:55%;
+				margin:0 auto;
+			}
+			.changeInfo .img, .changeInfo .img img{
+				width:150px;
+				height:150px;
+				margin:10px auto;
+				
+			 }
+			 .rePwd {
+				width:25%;
+				height:300px;
+				margin:50px 50px;
+				display:none;
+			 }
+			/*登录模块*/
+			.panel {
+				width:300px;
+				height:250px;
+				position:relative;
+				margin: 0 auto;
+			}
+			.modal-md {
+				width:350px;
+				height:300px;
+			}
+			.modal-body .checkbox {
+				float:left;
+				margin-top:3px;
+			}
+			.modal-body p a {
+				float:right;
+			}
+			.modal-body p {
+				font-size:12px;	
+			}
+			.help-block {
+				font-size:12px;	
+				color:red;
+			}
+			/*发布信息*/
+			.adds {
+				width:500px;
+				margin:10px 50px;
+				display:none;
+			}
+			
+			.adds .addImg {
+				width:340px;
+				height:340px;
+				margin:5px;
+				margin-top:30px;
+				border:1px solid #eee;
+			}
+			.adds .addImg img {
+				width:100px;
+				height:100px;
+				margin:5px;
+			}
+			.adds .addText textarea {
+				resize:none;
+				maxlength:120;
+			}
+			#addText_info {
+				height:100px;
+			}
+			/*已买宝贝*/
+			.shop {
+				background:#fff;
+				width:220px;
+				height:300px;
+				margin:2px 0px 28px 28px;
+				float:left;
+				text-align:center;
+			}
+			.shop:hover {
+				cursor:pointer;
+				box-shadow:0px 5px 5px 5px #ccc;
+				margin-top:2px;
+			}
+			.shop .title {
+				padding-top:5px;
+				display: block;
+				text-align:center;
+				font-size:16px;
+			}
+			.shop .desc {
+				margin: 0 10px 10px;
+				height: 18px;
+				font-size: 12px;
+				text-align: center;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+				color: #b0b0b0;
+			}
+			.shop .price {
+				margin: 0 auto;
+				text-align: center;
+				color: #ff6700;
+			}	
+			.shop .shop_img {
+				margin-top:20px;
+			}
+			button {
+				background:#d9534f;
+				border-radius:5px;
+				color:#fff;
+				border:none;
+				margin:3px 10px;
+				float:right;
+			}
+			/*系统消息*/
+			
+			.systemMessage .smallMessage .messTitle {
+				margin-left:20px;
+				width:500px;
+				height:30px;
+				line-height:30px;
+				font-size:16px;
+				background:#428bca;
+				color:#fff;
+				cursor:pointer;
+			}
+			.systemMessage .smallMessage .messBody {
+				width:500px;
+				margin-left:20px;
+				border:1px solid #428bca;	
+			}
+			.smallMessage {
+				width:500px;
+				margin:10px;
+				padding:0px;
+			}
+			/*聊天*/
+			.chatMessage, .systemMessage, .leaveMessage {display:none;}
+			
+			
+			.smallChat, .smallLeave {
+				width:100%;
+				height:100px;
+				margin:10px;
+				border:1px solid #333;
+				border-radius:10px;
+				background:#fffffb;
+				cursor:pointer;
+			}
+			.chatMessage .smallChat .img, .leaveMessage .smallLeave .img{
+				width:100px;
+				height:100px;
+				float:left;
+			}
+			.chatMessage .smallChat img, .leaveMessage .smallLeave img {
+				width:80px;
+				height:80px;
+				margin:10px;
+			}
+			.chatMessage .smallChat .text, .leaveMessage .smallLeave .text {
+				width:870px;
+				height:100px;
+				float:right;
+			}
+			.chatMessage .smallChat .text p, .leaveMessage .smallLeave .text p {
+				margin:10px;
+				font-size:16px;
+				margin-top:20px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div class="container">
+			<nav class="navbar navbar-inverse navbar-fixed-top" id="nav_main">
+				<div class="container">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<a href="../index.html" class="navbar-brand">
+								<img src="" alt="Brand">
+							</a>
+							<button class="navbar-toggle collapsed" data-toggle="collapse" 
+							data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						</div>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-right">
+								<li id="cart"><a class="btn btn-link" href="personal.html"><span class="glyphicon glyphicon-envelope"><span class="badge">6</span></span></a></li>
+								<li id="login">
+									<a class="btn btn-link" href="personal.html">
+										<!--<span class="glyphicon glyphicon-user"></span>---->
+										<img src="../images/customer/001.jpg" alt="" style="height:26px;width:26px;margin-top:-5px;" class="img-circle">
+									</a>
+									<div class="login-tip">
+										<ul class="list-unstyled">
+											<li><a href="personal.html">我要发布</a></li>
+											<li><a href="personal.html">在售宝贝</a></li>
+											<li><a href="personal.html">我的收藏</a></li>
+											<li><a href="personal.html">退出</a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+							<form class="navbar-form navbar-right">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="搜索商品">
+								</div>
+								<a class="btn btn-link"><span class="glyphicon glyphicon-search"></span></a>
+							</form>
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="../HTML/phone.html">闲置手机</a></li>
+								<li><a href="../HTML/computer.html">闲置电脑</a></li>
+								<li><a href="../HTML/fittings.html">数码配件</a></li>
+								<li><a href="../HTML/book.html">图书教材</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<div class="load"><!--所在路径-->
+				<ol class="breadcrumb">
+					<li><a href="../index.html">首页</a></li>
+					<li class="active">个人中心</li>
+				</ol>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #555555;" >	
+			  
+			<div class="main rows">		
+				<div class="col-md-2">
+					<div class="panel panel-primary">
+						<div class="panel-heading"><h4>个人中心</h4></div>
+						<ul class="panel-body list-unstyled">
+							<li>账户设置</li>
+							<li>我要发布</li>
+							<li>我的消息</li>
+							<li>卖出宝贝</li>	
+							<li>已买宝贝</li>
+							<li>在售宝贝</li>			
+							<li>我的收藏</li>	
+							<li>客户服务</li>
+						</ul>                                                                   
+					</div>
+				</div>
+				<div class="col-md-10">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 style="text-align:left;"></h3>
+						</div>
+						<div class="panel-body">
+							<!-- 账户设置 -->
+							<div class="button-rows div1">
+								<ul class="nav nav-tabs">
+									<li><a href="#">账户信息</a></li>
+									<li><a href="#">修改信息</a></li>
+									<li><a href="#">修改密码</a></li>
+								</ul>
+								<div class="div1-row userImg"> 
+									<div class="img">
+										<img src="../images/customer/001.jpg" alt="头像" class="img-thumbnail">
+									</div>
+									<div class="userText">
+										<table class="table">
+											<tr>
+												<td>用户名：</td>
+												<td><span>苏是兰达</span></td>
+											</tr>
+											<tr>
+												<td>性别:</td>
+												<td><span>男</span></td>
+											</tr>
+											<tr>
+												<td>所在地：</td>
+												<td><span>广东广州</span></td>
+											</tr>
+											<tr>
+												<td>手机号：</td>
+												<td><span>13450209142</span></td>
+											</tr>
+											<tr>
+												<td>邮箱：</td>
+												<td><span>576985100@qq.com</span></td>
+										</tr>
+											<tr>
+												<td colspan="2">加入SHT二手交易平台365天</td>
+											</tr>
+										</table>
+										<p><a href="#">编辑信息</a></p>
+									</div>
+								</div>
+								<div class="changeInfo div1-row">
+									<div class="img">
+										<img src="../images/customer/001.jpg" alt="头像" class="img-thumbnail">
+									</div>
+									<p style="text-align:center;"><a href="#">上传头像</a></p>
+									<form>
+										<table class="table">
+											<tr>
+												<td>用户名：</td>
+												<td><input type="text" name="username"></td>
+											</tr>
+											<tr>
+												<td>性别：</td>
+												<td>
+													<label class="radio-inline">
+														<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>男
+													</label>
+													<label class="radio-inline">
+														<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">女
+													</label>
+												</td>
+											</tr>
+											<tr>
+												<td>所在地：</td>
+												<td><input type="text" name="area" placeholder="如：广东 广州"></td>
+											</tr>
+											<tr>
+												<td>手机号：</td>
+												<td><input type="text" name="username"></td>
+											</tr>
+											<tr>
+												<td>邮箱：</td>
+												<td><input type="text" name="username"></td>
+											</tr>
+										</table>	
+										<p style="text-align:center; margin:20px;">
+											<input type="submit" value="保存信息" class="btn btn-primary">
+											<input type="reset" value="重新填写" class="btn btn-danger">
+										</p>
+									</form>
+								</div>
+								<div class="rePwd div1-row">
+									<h1 style="text-align:center;">修改密码</h1>
+									<form action="" method="post">
+										<div class="form-group">
+											<input type="password" class="form-control" name="password" id="username" placeholder="请输入旧密码">
+											<!-- <span class="help-block">*输入格式错误</span> -->
+										</div>
+										<div class="form-group">
+											<input type="password" class="form-control" name="newPassword" id="password" placeholder="请输入新密码">
+											<!-- <span class="help-block">*密码错误</span> -->
+										</div>		
+										<div class="form-group">
+											<input type="password" class="form-control" name="rePassword" id="password" placeholder="再次确认新密码">
+											<!-- <span class="help-block">*密码错误</span> -->
+										</div>	
+										<div class="form-group">
+											<input type="submit" value="修改密码" class="form-control btn btn-primary">
+										</div>						
+									</form>
+								</div>
+							</div>	
+							<!--我要发布-->						
+							<div class="adds button-rows">
+								<div style="height:30px;"><button class="btn btn-primary pull-left"><span class="glyphicon glyphicon-plus">添加照片</span></button></div>
+								<div class="addImg">
+									<img src="../images/customer/001.jpg">
+									<img src="../images/customer/001.jpg">
+									<img src="../images/customer/001.jpg">
+									<img src="../images/customer/001.jpg">
+									<img src="../images/customer/001.jpg">
+									<img src="../images/customer/001.jpg">
+									<img src="../images/customer/001.jpg">
+									<img src="../images/customer/001.jpg">
+									<img src="../images/customer/001.jpg">
+								</div>
+								
+								<div class="addText">
+									<form>
+										<div class="form-group">
+											<label for="addText_title">标题：</label>
+											<input type="text" class="form-control" id="addText_title" placeholder="宝贝标题 最多30个字" maxlength="30">
+										</div>
+										<div class="form-group">
+											<label for="addText_info">描述：</label>
+											<textarea class="form-control" id="addText_info">
+												
+												
+											</textarea>
+										</div>
+										<div class="form-group">
+											<label for="addText_area">所在地：</label>
+											<input type="text" class="form-control" id="addText_area" placeholder="所在地">
+										</div>
+										<div class="form-group">
+											<label for="addText_kind">分类：</label>
+											<input type="text" class="form-control" id="addText_kind" placeholder="分类">
+										</div>
+										<div class="form-group">
+											<label for="addText_title">价格：</label>
+											<input type="text" class="form-control" id="addText_title" placeholder="价格">
+										</div>
+										<div class="form-group">
+											<input class="btn btn-primary" type="submit" value="发布信息">
+											<input class="btn btn-danger pull-right" type="reset" value="重新填写">
+										</div>
+									</form>
+								</div>
+							</div>
+							<!--我的消息-->
+							<div class="personalMessage button-rows">
+								<ul class="nav nav-tabs">
+									<li><a href="#">系统消息</a></li>
+									<li><a href="#">聊天</a></li>
+									<li><a href="#">留言</a></li>
+								</ul>
+								<div class="systemMessage message-row"> 
+									<div class="smallMessage">
+										<div class="messTitle" data-toggle="collapse" data-target="#smallMessage1">
+											<span>【系统消息】</span>
+											<button class="btn btn-danger btn-xs">删除</button>
+										</div>
+										<div class="messBody collapse" id="smallMessage1">
+											<p>1刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新
+											刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新
+											刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新
+											刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新</p>
+										</div>
+									</div>
+									<div class="smallMessage">
+										<div class="messTitle" data-toggle="collapse" data-target="#smallMessage2">
+											<span>【系统消息】</span>
+											<button class="btn btn-danger btn-xs">删除</button>
+										</div>
+										<div class="messBody collapse" id="smallMessage2">
+											<p>2刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新
+											刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新
+											刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新
+											刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新刚从官网上抢的全新</p>
+										</div>
+									</div>
+								</div>	
+								<div class="chatMessage message-row">
+									<div class="smallChat">
+										<div class="img">
+											<img class="img-circle" src="../images/customer/001.jpg" alt="">
+										</div>
+										<div class="text">
+										
+										</div>
+									</div>
+									<hr style="height:1px;border:none;border-top:1px solid #555555;" >	
+									<div class="smallChat">
+										<div class="img">
+											<img class="img-circle" src="../images/customer/001.jpg" alt="">
+										</div>
+										<div class="text">
+											
+										</div>
+									</div>
+								</div>
+								<div class="leaveMessage message-row">
+									<div class="smallLeave">
+										<div class="img">
+											<img class="img-circle" src="../images/customer/001.jpg" alt="">
+										</div>
+										<div class="text">
+										</div>
+									</div>
+									<hr style="height:1px;border:none;border-top:1px solid #555555;" >	
+									<div class="smallLeave">
+										<div class="img">
+											<img class="img-circle" src="../images/customer/001.jpg" alt="">
+										</div>
+										<div class="text">
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--卖出宝贝-->
+							<div class="soldShop button-rows">
+								<ul class="list-unstyled">
+									<li class="shop">
+										<div class="shop_img">
+											<a href=""><img class="" src="../images/phone/360N5.jpg" width="160px" height="160px"></a>
+										</div>
+										<h4 class="title">360手机N5</h4>
+										<p class="desc">刚从官网上抢的全新</p>
+										<p class="price">￥1799</p>
+									</li>
+								</ul>
+							</div>
+							<!--已买宝贝-->
+							<div class="buyedShop button-rows">
+								<ul class="list-unstyled">
+									<li class="shop">
+										<div class="shop_img">
+											<a href=""><img class="" src="../images/phone/360N5.jpg" width="160px" height="160px"></a>
+										</div>
+										<h4 class="title">360手机N5</h4>
+										<p class="desc">刚从官网上抢的全新</p>
+										<p class="price">￥1799</p>
+									</li>
+								</ul>
+							</div>
+							<!--在售宝贝-->
+							<div class="sellingShop button-rows">
+								<ul class="list-unstyled">
+									<li class="shop">
+										<div class="shop_img">
+											<a href=""><img class="" src="../images/phone/360N5.jpg" width="160px" height="160px"></a>
+										</div>
+										<h4 class="title">360手机N5</h4>
+										<p class="desc">刚从官网上抢的全新</p>
+										<p class="price">￥1799</p>
+									</li>
+								</ul>
+							</div>
+							<!--我的收藏-->
+							<div class="collectShop button-rows">
+								<ul class="list-unstyled">
+									<li class="shop">
+										<div class="shop_img">
+											<a href=""><img class="" src="../images/phone/360N5.jpg" width="160px" height="160px"></a>
+										</div>
+										<h4 class="title">360手机N5</h4>
+										<p class="desc">刚从官网上抢的全新</p>
+										<p class="price">￥1799</p>
+									</li>
+								</ul>
+							</div>
+							<!-- 客户服务 -->
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+			
+			
+			
+			<!-- 登录模块 -->
+			<div class="modal fade" id="myModal">
+				<div class="modal-dialog modal-md">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div class="close" data-dismiss="modal">&times;</div>
+							<h3 class="modal-title">登录账号</h3>	
+						</div>
+						<div class="modal-body">
+							<div class="panel">
+								<form action="" method="post">
+									<div class="form-group">
+										<input type="text" class="form-control" name="username" id="username" placeholder="手机号码">
+										<!-- <span class="help-block">*输入格式错误</span> -->
+									</div>
+									<div class="form-group">
+										<input type="password" class="form-control" name="password" id="password" placeholder="密码">
+										<!-- <span class="help-block">*密码错误</span> -->
+									</div>
+									<p>
+										<input type="checkbox" class="checkbox" value="">记住密码
+										<a href="#">忘记密码</a>
+									</p>		
+									<div class="form-group">
+										<input type="submit" value="登录" class="form-control btn btn-primary">
+									</div>
+									<p>
+										<a href="sign.html">立即注册</a>
+									</p>						
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</body>
+	<script>
+		//终极连接
+		$('.main .col-md-2 li').click(function(){
+			$(this).css({'background':'#428bca'});
+			$('.main .col-md-2 li').not($(this)).css({'background':'#fff'});
+			idx=$(this).index('.main .col-md-2 li');
+			str=$('.main .col-md-2 li').eq(idx).text();
+			$('.col-md-10 .button-rows').eq(idx).show();
+			$('.col-md-10 .button-rows').not($('.col-md-10 .button-rows').eq(idx)).hide();
+			$('.col-md-10 .panel-heading h3').text(str);
+		});
+		$('.main .col-md-2 li').eq(0).css({'background':'#428bca'});
+		$('.col-md-10 .button-rows').eq(0).show();
+		$('.col-md-10 .panel-heading h3').eq(0).text("账户设置");
+		//账户设置
+		$('.div1 .nav li').click(function(){
+			$(this).addClass('active');
+			$('.div1 .nav li').not($(this)).removeClass('active');
+			idx=$(this).index('.div1 .nav li');
+			$('.div1 .div1-row').eq(idx).css({'display':'block'});
+			$('.div1 .div1-row').not($('.div1 .div1-row').eq(idx)).css({'display':'none'});
+		});
+		$('.div1 .div1-row').eq(0).show();
+		$('.div1 .nav li').eq(0).addClass('active');
+		//我的消息
+		$('.personalMessage .nav li').click(function(){
+			$(this).addClass('active');
+			$('.personalMessage .nav li').not($(this)).removeClass('active');
+			idx=$(this).index('.personalMessage li');
+			$('.personalMessage .message-row').eq(idx).show();
+			$('.personalMessage .message-row').not($('.personalMessage .message-row').eq(idx)).hide();
+		});
+		$('.personalMessage .message-row').eq(0).show();
+		$('.personalMessage .nav li').eq(0).addClass('active');
+		//卖出宝贝
+		$('.soldShop li').mouseenter(function(){
+			 $(this).append("<button>删除</button>");
+		});
+		$('.soldShop li').mouseleave(function(){
+			$('.soldShop li button').detach();
+		});
+		//已买宝贝
+		$('.buyedShop li').mouseenter(function(){
+			 $(this).append("<button>删除</button>");
+		});
+		
+		$('.buyedShop li').mouseleave(function(){
+			$('.buyedShop li button').detach();
+		});
+		//在售宝贝
+		$('.sellingShop li').mouseenter(function(){
+			 $(this).append("<button>删除</button><button>编辑</button>");
+		});
+		
+		$('.sellingShop li').mouseleave(function(){
+			$('.sellingShop li button').detach();
+		});
+		//我的收藏
+		$('.collectShop li').mouseenter(function(){
+			 $(this).append("<button>取消收藏</button>");
+		});
+		
+		$('.collectShop li').mouseleave(function(){
+			$('.collectShop li button').detach();
+		});
+		//-----------------登录模块----------------------------------
+		$('form .form-group').keyup(function(){
+			$('#username').focusout(function(){
+				username = $('#username').val();
+				if(username.length <5  || username.length > 22) {
+					$('.help-block:first').css({'display':'block'});
+				}
+			});	
+			$('#password').focusout(function(){
+				username = $('#password').val();
+				if(username.length==0) {
+					$('.help-block:last').css({'display':'block'});
+				}
+			});		
+		});
+		//-------------个人中心--------------
+		$('#login').mouseenter(function(){
+			$('.login-tip').show();
+		});
+		$('#login').mouseleave(function(){
+			$('.login-tip').hide();
+		});
+	</script>
+</html>

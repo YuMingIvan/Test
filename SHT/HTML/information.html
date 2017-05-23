@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Sht二手交易平台</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<style>
+			span {
+				font-family:微软雅黑;
+				margin:0px;
+				padding:0px;
+				font-size:18px;
+			}
+			#nav_main {
+				height:50px;	
+			}
+		
+			.container {
+				width:1300px;
+			}
+			.navbar-collapse #login .login-tip {
+				height:150px;
+				width:120px;
+				margin-top:50px;
+				position:absolute;
+				top:0px;
+				right:0px;
+				background:#fff;
+				box-shadow:0px 2px 2px 2px #ccc;
+				text-align:center;
+				display:none;
+			}
+			.navbar-collapse #login .login-tip li {
+				margin:15px auto;
+			}
+			.navbar-collapse #login .login-tip li a {
+				text-decoration:none;
+				color:#333;
+			}
+			.main {
+				margin-top:50px;
+				padding-top:10px;
+				background:#fff;
+				
+				overflow:hidden;
+			}
+			.breadcrumb {
+				margin-bottom:20px;
+				background:#fff;
+			}
+			.information {
+				height:500px;
+			}
+			.allInfotmation {
+				margin:20px 0px; 
+			}
+			.allInfotmation .panel {
+				width:100%;
+				height:100%;
+				
+			}
+			.allInfotmation .panel-title {
+				font-weight:bold;
+			}
+			.allInfotmation .panel-body{
+				font-size:16px;
+			}
+			.allInfotmation .panel-body .showImg {
+				width:100%;
+				height:100%;
+				margin:10px auto;
+			}
+			.allInfotmation .panel-body .showImg img{
+				width:100%;
+			}
+			.image_reel {
+				position:absolute;
+				left:0px;
+				top:0px;
+			}
+			.image_reel img {
+				float:left;
+			}
+			.shop_photo {
+				width:100%;
+				height:300px;
+				overflow:hidden;
+				position:relative;
+			}
+			.shop_photo img{
+				width:300px;
+				margin:10px 100px;
+				
+			} 
+			.shop_sm_photo {
+				margin-top:50px;
+				width:500px;
+				height:100px;
+			}
+			.shop_sm_photo a {
+				text-decoration:none;
+			}
+			.shop_sm_photo a div {
+				float:left;
+			}
+			
+			.shop_sm_photo a img {
+				width:80px;
+				height:80px;
+				margin:10px;
+			}
+			.table {
+				width:350px;
+				margin:20px auto;
+				margin-top:50px;
+			}
+			
+			.table tbody tr td {
+				font-size:14px;
+				height:30px;
+				line-height:30px;
+				border:none;
+			}
+			.table>tbody>tr:first-child>td {
+				font-size:25px;
+				height:25px;
+				font-weight:bold;
+				line-height:25px;
+			}
+			.seller {
+				margin:20px auto; 
+				height:350px;
+				width:250px;
+				text-align:center;
+				font-size:16px;
+			}		
+			.img {
+				margin:20px auto; 
+				width:150px;
+				height:150px;
+			}
+			.img img {
+				width:150px;
+				height:150px;
+			}
+			.col-md-3 {
+				background:#eee;
+				height:1600px;
+				margin-top:-20px;
+			}
+			.col-md-3 .title {
+				font-size:18px;
+				margin:20px 0px;
+				font-weight:bold;
+			}
+			.col-md-3 .sellerShop, .col-md-3 .hotShop {
+				widht:300px;
+				height:110px;
+				margin:10px auto;
+			}
+			
+			/*登录模块*/
+			.panel {
+				width:300px;
+				height:250px;
+				position:relative;
+				margin: 0 auto;
+			}
+			.modal-md {
+				width:350px;
+				height:300px;
+			}
+			.modal-body .checkbox {
+				float:left;
+				margin-top:3px;
+			}
+			.modal-body p a {
+				float:right;
+			}
+			.modal-body p {
+				font-size:12px;	
+			}
+			.help-block {
+				font-size:12px;	
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<nav class="navbar navbar-inverse navbar-fixed-top" id="nav_main">
+				<div class="container">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<a href="../index.html" class="navbar-brand">
+								<img src="" alt="Brand">
+							</a>
+							<button class="navbar-toggle collapsed" data-toggle="collapse" 
+							data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						</div>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-right">
+								<li id="cart"><a class="btn btn-link" href="personal.html"><span class="glyphicon glyphicon-envelope"><span class="badge">6</span></span></a></li>
+								<li id="login">
+									<a class="btn btn-link" href="personal.html">
+										<!--<span class="glyphicon glyphicon-user"></span>---->
+										<img src="../images/customer/001.jpg" alt="" style="height:26px;width:26px;margin-top:-5px;" class="img-circle">
+									</a>
+									<div class="login-tip">
+										<ul class="list-unstyled">
+											<li><a href="personal.html">我要发布</a></li>
+											<li><a href="personal.html">在售宝贝</a></li>
+											<li><a href="personal.html">我的收藏</a></li>
+											<li><a href="personal.html">退出</a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+							<form class="navbar-form navbar-right">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="搜索商品">
+								</div>
+								<a class="btn btn-link"><span class="glyphicon glyphicon-search"></span></a>
+							</form>
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="../HTML/phone.html">闲置手机</a></li>
+								<li><a href="../HTML/computer.html">闲置电脑</a></li>
+								<li><a href="../HTML/fittings.html">数码配件</a></li>
+								<li><a href="../HTML/books.html">图书教材</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<div class="main">
+				<div class="load"><!--所在路径-->
+					<ol class="breadcrumb">
+						<li><a href="../index.html">首页</a></li>
+						<li class="active">商品路径</li>
+					</ol>
+				</div>
+				<hr>
+				<!-- style="border:1px solid #000;" -->
+				<div class="rows">
+					<div class="col-md-9">
+						<div class="information rows">
+							<div class="col-md-7">
+								<div class="carousel">
+									<div class="shop_photo">  
+										<div class="image_reel">
+											<a href="#"><img src="../images/phone/meizu1.jpg" alt=""></a>
+											<a href="#"><<img src="../images/phone/meizu1.jpg"alt=""></a>
+											<a href="#"><img src="../images/phone/meizu1.jpg" alt=""></a>
+											<a href="#"><img src="../images/phone/meizu1.jpg" alt=""></a>
+										</div>
+									</div>
+								
+									<div class="shop_sm_photo">
+										<a href="#" rel="1"><div><img src="../images/phone/meizu1.jpg" width="80px" height="80px" alt=""></div></a>
+										<a href="#" rel="2"><div><img src="../images/phone/meizu1.jpg" width="80px" height="80px" alt=""></div></a>
+										<a href="#" rel="3"><div><img src="../images/phone/meizu1.jpg" width="80px" height="80px" alt=""></div></a>
+										<a href="#" rel="4"><div><img src="../images/phone/meizu1.jpg" width="80px" height="80px" alt=""></div></a>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-5">
+								<table class="table">
+									<tr>
+										<td colspan="2">全新iPhone 7行货行货行货行货行货行货行货行货行货行货</td>
+									</tr>
+									<tr>
+										<td style="width:80px;">现&nbsp;价：</td>
+										<td style="color:red;font-size:22px;">￥2600</td>
+									</tr>
+									<tr>
+										<td style="width:80px;">成&nbsp;色：</td>
+										<td>非全新</td>
+									</tr>
+									<tr>
+										<td style="width:80px;">所在地：</td>
+										<td>广东 广州</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+										<span class="label label-info">真实个人</span>&nbsp;
+										<span class="label label-info">担保交易</span>&nbsp;
+										<span class="label label-info">支持全国</span>&nbsp;
+										<span class="label label-info">平台自营</span>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<button class="btn btn-primary btn-block" style="float:left;width:150px; margin:0 auto;">联系卖家</button>
+											<button class="btn btn-primary btn-block" style="float:right;width:150px; margin:0 auto;">立即购买</button>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2"><button class="btn btn-default"><span style="font-size:14px; color:#FFA500;" class="glyphicon glyphicon-star-empty"></span>收藏</button></td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<!-- 商品描述 -->
+						<div class="allInfotmation">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title">宝贝介绍</h3>
+								</div>
+								<div class="panel-body">
+									<p>华为畅享5s，买了999，因为想换机，便宜出了！运行2g，内存16g，后置指纹解锁，买来没半年，打王者不卡，需要的联系！9五新，一处有摔到。不影响使用！支持发往验货！顺丰包邮！买到就是赚到，速速联系。
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- 留言 -->
+						<div class="allInfotmation">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title">留言</h3>
+								</div>
+								<div class="panel-body">
+									
+								</div>
+							</div>
+						</div>
+						<!-- 商品图片 -->
+						<div class="allInfotmation">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									<h3 class="panel-title">宝贝图片</h3>
+								</div>
+								<div class="panel-body">
+									<div class="showImg">
+										<img src="../images/customer/001.jpg">
+									</div>
+									<div class="showImg">
+										<img src="../images/customer/001.jpg">
+									</div>
+									<div class="showImg">
+										<img src="../images/customer/001.jpg">
+									</div>
+									<div class="showImg">
+										<img src="../images/customer/001.jpg">
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					<div class="col-md-3">
+						<div class="seller">
+							<div class="img">
+								<img src="../images/customer/001.jpg" alt="头像" class="img-circle">
+							</div>
+							<p style="font-weight:bold;">苏是兰达</p>
+							<p>长居地是珠海</p>
+							<p>他加入SHT二手交易平台已经365天</p>
+						</div>
+						<hr style="height:1px;border:none;border-top:1px solid #555555;" >
+						<div class="title">
+							<p><span class="glyphicon glyphicon-th-large"></span>他的在售宝贝</p>
+						</div>
+						<ul class="list-unstyled list-inline">
+							<li class="sellerShop">		
+								<div style="float:left; width:100px;">
+									<img src="../images/phone/nubia.jpg" alt="" width="100px" height="100px">
+								</div>
+								<div style="float:right; width:180px; height:100px;">
+									<p>Nubia全新行货行货行货行货行货行货Nubia全新行货行货行货行货行货行货Nubia全新</p>
+									<p style="color:red; font-size:16px;">￥2000</p>
+								</div>
+							</li>
+							<li class="sellerShop">		
+								<div style="float:left; width:100px;">
+									<img src="../images/phone/nubia.jpg" alt="" width="100px" height="100px">
+								</div>
+								<div style="float:right; width:180px; height:100px;">
+									<p>Nubia全新行货行货行货行货行货行货Nubia全新行货行货行货行货行货行货Nubia全新</p>
+									<p style="color:red; font-size:16px;">￥2000</p>
+								</div>
+							</li>
+							<li class="sellerShop">		
+								<div style="float:left; width:100px;">
+									<img src="../images/phone/nubia.jpg" alt="" width="100px" height="100px">
+								</div>
+								<div style="float:right; width:180px; height:100px;">
+									<p>Nubia全新行货行货行货行货行货行货Nubia全新行货行货行货行货行货行货Nubia全新</p>
+									<p style="color:red; font-size:16px;">￥2000</p>
+								</div>
+							</li>
+							<!-- <li class="sellerShop">	
+								<div style="float:left; width:100px;">
+									<img src="../images/phone/nubia.jpg" alt="" width="100px" height="100px">
+								</div>
+								<div style="float:right; width:180px; height:100px;">
+									<p>Nubia全新行货行货行货行货行货行货Nubia全新行货行货行货行货行货行货Nubia全新</p>
+									<p style="color:red; font-size:16px;">￥2000</p>
+								</div>
+							</li> -->
+							<li>		
+								<button class="btn btn-primary btn-sm btn-block" style="width:280px">查看更多宝贝>></button></button></button>
+							</li>
+						</ul>
+						<hr style="height:1px;border:none;border-top:1px solid #555555;" >
+						<div class="title">
+							<p><span class="glyphicon glyphicon-th-large"></span>热门推送</p>
+						</div>
+						<ul class="list-unstyled list-inline">
+							<li class="hotShop">		
+								<div style="float:left; width:100px;">
+									<img src="../images/phone/nubia.jpg" alt="" width="100px" height="100px">
+								</div>
+								<div style="float:right; width:180px; height:100px;">
+									<p>Nubia全新行货行货行货行货行货行货Nubia全新行货行货行货行货行货行货Nubia全新</p>
+									<p style="color:red; font-size:16px;">￥2000</p>
+								</div>
+							</li>
+							<li class="hotShop">		
+								<div style="float:left; width:100px;">
+									<img src="../images/phone/nubia.jpg" alt="" width="100px" height="100px">
+								</div>
+								<div style="float:right; width:180px; height:100px;">
+									<p>Nubia全新行货行货行货行货行货行货Nubia全新行货行货行货行货行货行货Nubia全新</p>
+									<p style="color:red; font-size:16px;">￥2000</p>
+								</div>
+							</li>
+							<li class="hotShop">		
+								<div style="float:left; width:100px;">
+									<img src="../images/phone/nubia.jpg" alt="" width="100px" height="100px">
+								</div>
+								<div style="float:right; width:180px; height:100px;">
+									<p>Nubia全新行货行货行货行货行货行货Nubia全新行货行货行货行货行货行货Nubia全新</p>
+									<p style="color:red; font-size:16px;">￥2000</p>
+								</div>
+							</li>
+							<li class="hotShop">		
+								<div style="float:left; width:100px;">
+									<img src="../images/phone/nubia.jpg" alt="" width="100px" height="100px">
+								</div>
+								<div style="float:right; width:180px; height:100px;">
+									<p>Nubia全新行货行货行货行货行货行货Nubia全新行货行货行货行货行货行货Nubia全新</p>
+									<p style="color:red; font-size:16px;">￥2000</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				
+				
+				
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			<!-- 登录模块 -->
+			<div class="modal fade" id="myModal">
+				<div class="modal-dialog modal-md">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div class="close" data-dismiss="modal">&times;</div>
+							<h3 class="modal-title">登录账号</h3>	
+						</div>
+						<div class="modal-body">
+							<div class="panel">
+								<form action="" method="post">
+									<div class="form-group">
+										<input type="text" class="form-control" name="username" id="username" placeholder="手机号码">
+										<!-- <span class="help-block">*输入格式错误</span> -->
+									</div>
+									<div class="form-group">
+										<input type="password" class="form-control" name="password" id="password" placeholder="密码">
+										<!-- <span class="help-block">*密码错误</span> -->
+									</div>
+									<p>
+										<input type="checkbox" class="checkbox" value="">记住密码
+										<a href="#">忘记密码</a>
+									</p>		
+									<div class="form-group">
+										<input type="submit" value="登录" class="form-control btn btn-primary">
+									</div>
+									<p>
+										<a href="sign.html">立即注册</a>
+									</p>						
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</body>
+	<script>
+		//-----------------------幻灯片图片-----------------------------------
+			$(".shop_sm_photo a:first div").addClass("active");
+			
+			var imageWidth = $(".shop_photo").width();
+			var imageSum = $(".image_reel img").size();
+			var imageReelWidth = imageWidth * imageSum;//shop_photo的宽=3副图总宽
+			
+			$(".image_reel").css({"width":imageReelWidth});
+			
+			rotate = function()
+			{
+				var triggerID = $active.attr("rel")-1;
+				var image_reelPosition = triggerID * imageWidth;
+				$(".shop_sm_photo a div").removeClass("active");
+				$active.addClass("active");
+				$(".image_reel").animate({left:-image_reelPosition},500);
+			};
+			
+			
+			rotaeSwitch = function()
+			{
+				play = setInterval(function()
+				{
+					$active = $(".shop_sm_photo div.active").parent().next();
+					if($active.length == 0)
+					{
+						$active = $(".shop_sm_photo a:first");
+					}
+					rotate();
+				},2000);
+			};
+			rotaeSwitch();
+  			
+			$(".image_reel a").hover(function()
+			{
+				clearInterval(play);
+			},function()
+			{
+				rotaeSwitch();
+			});
+			
+			
+			$(".shop_sm_photo a").click(function()
+			{
+				$active = $(this);
+				clearInterval(play);
+				rotate();
+				rotaeSwitch();
+				return false;
+			});
+
+		//-----------------登录模块----------------------------------
+		$('form .form-group').keyup(function(){
+			$('#username').focusout(function(){
+				username = $('#username').val();
+				if(username.length <5  || username.length > 22) {
+					$('.help-block:first').css({'display':'block'});
+				}
+			});	
+			$('#password').focusout(function(){
+				username = $('#password').val();
+				if(username.length==0) {
+					$('.help-block:last').css({'display':'block'});
+				}
+			});
+				
+		});
+		//-------------个人中心--------------
+		$('#login').mouseenter(function(){
+			$('.login-tip').show();
+		});
+		$('#login').mouseleave(function(){
+			$('.login-tip').hide();
+		});
+	</script>
+</html>

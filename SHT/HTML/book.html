@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Sht二手交易平台</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link href="../css/bootstrap.min.css" rel="stylesheet">
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<style>
+			span {
+				font-family:微软雅黑;
+				margin:0px;
+				padding:0px;
+				font-size:18px;
+			}
+			#nav_main {
+				height:50px;	
+			}
+		
+			.container {
+				width:1300px;
+			}
+			.navbar-collapse #login .login-tip {
+				height:150px;
+				width:120px;
+				margin-top:50px;
+				position:absolute;
+				top:0px;
+				right:0px;
+				background:#fff;
+				box-shadow:0px 2px 2px 2px #ccc;
+				text-align:center;
+				display:none;
+			}
+			.navbar-collapse #login .login-tip li {
+				margin:15px auto;
+			}
+			.navbar-collapse #login .login-tip li a {
+				text-decoration:none;
+				color:#333;
+			}
+			.main {
+				margin-top:50px;
+				padding-top:20px;
+				background:#fff;
+			}
+			.breadcrumb {
+				background:#fff;
+			}
+			.dl-horizontal span {
+				font-size:14px;
+				line-height:26px;
+			}
+			.dl-horizontal span {
+				font-size:14px;
+				line-height:26px;
+			}
+			.kind {	
+				width:1130px;
+				height:150px;
+			}
+			.kind .dl-horizontal {
+				margin-bottom:0px;
+			}
+			.kind dl dd li {
+				line-height:30px;
+				padding-left:10px;
+				color:#333;
+			}
+			.kind dl dd li:hover {
+				color:blue;
+				cursor:pointer;
+			}
+			.search {	
+				width:600px;
+				height:40px;
+				margin:20px;		
+				margin-bottom:-25px;
+				line-height:40px;
+				padding-left:10px;
+			}
+			.search a {
+				text-decoration:none;
+				color:#333;
+			}
+			.search span {
+				font-size:15px;
+				line-height:40px;
+			}
+			.search .searchPrice {
+				width:190px;
+				height:30px;
+				margin-left:-20px;
+			}
+			#price1 {
+				float:left;
+				height:22px;
+				margin:10px 0px 5px 0px; 
+			}
+			#price2 {
+				float:right;
+				height:22px;
+				margin:10px 0px 5px 0px;
+			}
+			.nav_page {
+				text-align:center;
+			}
+			.showBody {
+				width:1270px;	
+				background-color:#F8F8FF;
+			}
+			.shop {
+				background:#fff;
+				width:220px;
+				height:300px;
+				margin:2px 0px 28px 28px;
+				float:left;
+				text-align:center;
+			}
+			.shop:hover {
+				cursor:pointer;
+				box-shadow:0px 5px 5px 5px #ccc;
+				margin-top:2px;
+			}
+			.shop .title {
+				padding-top:5px;
+				display: block;
+				text-align:center;
+				font-size:16px;
+			}
+			.shop .desc {
+				margin: 0 10px 10px;
+				height: 18px;
+				font-size: 12px;
+				text-align: center;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+				color: #b0b0b0;
+			}
+			.shop .price {
+				margin: 0 auto;
+				text-align: center;
+				color: #ff6700;
+			}	
+			.shop .shop_img {
+				margin-top:20px;
+			}
+			/*登录模块*/
+			.panel {
+				width:300px;
+				height:250px;
+				position:relative;
+				margin: 0 auto;
+			}
+			.modal-md {
+				width:350px;
+				height:300px;
+			}
+			.modal-body .checkbox {
+				float:left;
+				margin-top:3px;
+			}
+			.modal-body p a {
+				float:right;
+			}
+			.modal-body p {
+				font-size:12px;	
+			}
+			.help-block {
+				font-size:12px;	
+				color:red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<nav class="navbar navbar-inverse navbar-fixed-top" id="nav_main">
+				<div class="container">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<a href="../index.html" class="navbar-brand">
+								<img src="" alt="Brand">
+							</a>
+							<button class="navbar-toggle collapsed" data-toggle="collapse" 
+							data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						</div>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-right">
+								<li id="cart"><a class="btn btn-link" href="personal.html"><span class="glyphicon glyphicon-envelope"><span class="badge">6</span></span></a></li>
+								<li id="login">
+									<a class="btn btn-link" href="personal.html">
+										<!--<span class="glyphicon glyphicon-user"></span>---->
+										<img src="../images/customer/001.jpg" alt="" style="height:26px;width:26px;margin-top:-5px;" class="img-circle">
+									</a>
+									<div class="login-tip">
+										<ul class="list-unstyled">
+											<li><a href="personal.html">我要发布</a></li>
+											<li><a href="personal.html">在售宝贝</a></li>
+											<li><a href="personal.html">我的收藏</a></li>
+											<li><a href="personal.html">退出</a></li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+							<form class="navbar-form navbar-right">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="搜索商品">
+								</div>
+								<a class="btn btn-link"><span class="glyphicon glyphicon-search"></span></a>
+							</form>
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="phone.html">闲置手机</a></li>
+								<li><a href="computer.html">闲置电脑</a></li>
+								<li><a href="fittings.html">数码配件</a></li>
+								<li><a href="book.html">图书教材</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<div class="main">
+				<div class="load"><!--所在路径-->
+					<ol class="breadcrumb">
+						<li><a href="../index.html">首页</a></li>
+						<li class="active">图书教材</li>
+					</ol>
+				</div>
+				<div class="kind"><!--分类-->
+					<dl class="dl-horizontal">
+							<dt><span>类别：</span></dt>
+							<dd>
+								<ul class="list-unstyled list-inline">
+									<li>全部</li>
+									<li>专业/技术</li>
+									<li>工具书</li>
+									<li>经济管理</li>
+									<li>考试/教材教辅</li>
+									<li>生活图书</li>
+									<li>小说/文学</li>
+									<li>计算机图书</li>
+									<li>人文社科</li>
+									<li>少儿图书</li>
+									<li>漫画</li>
+									<li>期刊杂志</li>
+								</ul>
+							</dd>
+					</dl>
+					<dl class="dl-horizontal">
+							<dt><span>价格：</span></dt>
+							<dd>
+								<ul class="list-unstyled list-inline">
+									<li>全部</li>
+									<li>20以下</li>
+									<li>20-50元</li>
+									<li>50-100元</li>
+									<li>100-150元</li>
+									<li>150-200元</li>
+									<li>200-230元</li>
+									<li>300-500元</li>
+									<li>500元以上</li>
+								</ul>
+							</dd>
+					</dl>
+					<dl class="dl-horizontal">
+							<dt><span>区域：</span></dt>
+							<dd>
+								<ul class="list-unstyled list-inline">
+									<li>全世界</li>
+								</ul>
+							</dd>
+					</dl>
+				</div>
+				<div>
+					<ul class="search list-inline"><!--查询，排序-->
+						<li><a href="#">综合</a></li>
+						<li><a href="#">发布时间</a></li>
+						<li><a href="#">价格由低到高</a></li>
+						<li><a href="#">价格由高到低</a></li>
+						<!-- <li>价格区间：</li>
+						<li class="searchPrice">
+							<p>
+								<input type="text" id="price1" size="5">
+								<span>-</span>				
+								<button class="btn-xs" style="float:right;margin:8px 0px 0px 5px;">确定</button>
+								<input type="text" id="price2" size="5">	
+							</p>
+						</li> -->
+					</ul>
+					
+				</div>
+				<hr>
+				<div class="showBody"><!--主体-->
+					<ul class="list-unstyled">
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/meizu1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">魅族手机</h4>
+							<p class="desc">全新魅蓝5 支持现金交易</p>
+							<p class="price">￥1500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/360N5.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">360手机N5</h4>
+							<p class="desc">刚从官网上抢的全新</p>
+							<p class="price">￥1799</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/A3010.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">一加3T手机</h4>
+							<p class="desc">全新4G+128G</p>
+							<p class="price">￥3500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/honorNote8.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">华为荣耀Note8</h4>
+							<p class="desc">第一批最新荣耀Note8</p>
+							<p class="price">￥2600</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/lenovo1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">ZUK Z2pro</h4>
+							<p class="desc">4G+128G值得拥有</p>
+							<p class="price">￥3200</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/samsung1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">三星盖乐世5 one</h4>
+							<p class="desc">7成新可以微刀</p>
+							<p class="price">￥1099</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/nubia.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">nubiaZ11</h4>
+							<p class="desc">可以拍星星的手机</p>
+							<p class="price">￥3599</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/oppoA57.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">OPPOA57</h4>
+							<p class="desc">全新，自拍神器</p>
+							<p class="price">￥3200</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/vivoX9.png" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">VIVI手机</h4>
+							<p class="desc">vivoX9你值得拥有</p>
+							<p class="price">￥3299</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/huawei1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">华为meta9</h4>
+							<p class="desc">让你出差更方便</p>
+							<p class="price">￥4200</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/meizu1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">魅族手机</h4>
+							<p class="desc">全新魅蓝5 支持现金交易</p>
+							<p class="price">￥1500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/360N5.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">360手机N5</h4>
+							<p class="desc">刚从官网上抢的全新</p>
+							<p class="price">￥1799</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/A3010.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">一加3T手机</h4>
+							<p class="desc">全新4G+128G</p>
+							<p class="price">￥3500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/honorNote8.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">华为荣耀Note8</h4>
+							<p class="desc">第一批最新荣耀Note8</p>
+							<p class="price">￥2600</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/lenovo1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">ZUK Z2pro</h4>
+							<p class="desc">4G+128G值得拥有</p>
+							<p class="price">￥3200</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/samsung1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">三星盖乐世5 one</h4>
+							<p class="desc">7成新可以微刀</p>
+							<p class="price">￥1099</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/nubia.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">nubiaZ11</h4>
+							<p class="desc">可以拍星星的手机</p>
+							<p class="price">￥3599</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/oppoA57.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">OPPOA57</h4>
+							<p class="desc">全新，自拍神器</p>
+							<p class="price">￥3200</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/vivoX9.png" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">VIVI手机</h4>
+							<p class="desc">vivoX9你值得拥有</p>
+							<p class="price">￥3299</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/huawei1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">华为meta9</h4>
+							<p class="desc">让你出差更方便</p>
+							<p class="price">￥4200</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/meizu1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">魅族手机</h4>
+							<p class="desc">全新魅蓝5 支持现金交易</p>
+							<p class="price">￥1500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/360N5.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">360手机N5</h4>
+							<p class="desc">刚从官网上抢的全新</p>
+							<p class="price">￥1799</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/A3010.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">一加3T手机</h4>
+							<p class="desc">全新4G+128G</p>
+							<p class="price">￥3500</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/honorNote8.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">华为荣耀Note8</h4>
+							<p class="desc">第一批最新荣耀Note8</p>
+							<p class="price">￥2600</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/lenovo1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">ZUK Z2pro</h4>
+							<p class="desc">4G+128G值得拥有</p>
+							<p class="price">￥3200</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/samsung1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">三星盖乐世5 one</h4>
+							<p class="desc">7成新可以微刀</p>
+							<p class="price">￥1099</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/nubia.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">nubiaZ11</h4>
+							<p class="desc">可以拍星星的手机</p>
+							<p class="price">￥3599</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/oppoA57.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">OPPOA57</h4>
+							<p class="desc">全新，自拍神器</p>
+							<p class="price">￥3200</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/vivoX9.png" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">VIVI手机</h4>
+							<p class="desc">vivoX9你值得拥有</p>
+							<p class="price">￥3299</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/huawei1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">华为meta9</h4>
+							<p class="desc">让你出差更方便</p>
+							<p class="price">￥4200</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/vivoX9.png" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">VIVI手机</h4>
+							<p class="desc">vivoX9你值得拥有</p>
+							<p class="price">￥3299</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/huawei1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">华为meta9</h4>
+							<p class="desc">让你出差更方便</p>
+							<p class="price">￥4200</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/vivoX9.png" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">VIVI手机</h4>
+							<p class="desc">vivoX9你值得拥有</p>
+							<p class="price">￥3299</p>
+						</li>
+						<li class="shop">
+							<div class="shop_img">
+								<a href=""><img class="" src="../images/phone/huawei1.jpg" width="160px" height="160px"></a>
+							</div>
+							<h4 class="title">华为meta9</h4>
+							<p class="desc">让你出差更方便</p>
+							<p class="price">￥4200</p>
+						</li>
+						<!-- 分页 -->
+						<div class="nav_page"><!--分页-->
+							<nav aria-label="...">
+								<ul class="pagination">
+									<li class="disabled">
+										<span>
+											<span aria-hidden="true">&laquo;</span>
+										</span>
+									</li>
+									<li class="active">
+										<span>1 <span class="sr-only">(current)</span></span>
+									</li>
+									<li><a href="#">2</a></li>
+									<li><a href="#">3</a></li>
+									<li><a href="#">4</a></li>
+									<li><a href="#">5</a></li>
+									<li><a href="#">6</a></li>
+									<li><a href="#">7</a></li>
+									<li><a href="#">...</a></li>
+									<li><a href="#">15</a></li>
+									<li>
+										<a href="#" aria-label="Next">
+											<span aria-hidden="true">&raquo;</span>
+										</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</ul>
+				</div>
+				<!-- 登录模块 -->
+				<div class="modal fade" id="myModal">
+					<div class="modal-dialog modal-md">
+						<div class="modal-content">
+							<div class="modal-header">
+								<div class="close" data-dismiss="modal">&times;</div>
+								<h3 class="modal-title">登录账号</h3>	
+							</div>
+							<div class="modal-body">
+								<div class="panel">
+									<form action="" method="post">
+										<div class="form-group">
+											<input type="text" class="form-control" name="username" id="username" placeholder="手机号码">
+											<!-- <span class="help-block">*输入格式错误</span> -->
+										</div>
+										<div class="form-group">
+											<input type="password" class="form-control" name="password" id="password" placeholder="密码">
+											<!-- <span class="help-block">*密码错误</span> -->
+										</div>
+										<p>
+											<input type="checkbox" class="checkbox" value="">记住密码
+											<a href="#">忘记密码</a>
+										</p>		
+										<div class="form-group">
+											<input type="submit" value="登录" class="form-control btn btn-primary">
+										</div>
+										<p>
+											<a href="sign.html">立即注册</a>
+										</p>						
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</body>
+	<script>
+		//-----------------登录模块----------------------------------
+		$('form .form-group').keyup(function(){
+			$('#username').focusout(function(){
+				username = $('#username').val();
+				if(username.length <5  || username.length > 22) {
+					$('.help-block:first').css({'display':'block'});
+				}
+			});	
+			$('#password').focusout(function(){
+				username = $('#password').val();
+				if(username.length==0) {
+					$('.help-block:last').css({'display':'block'});
+				}
+			});
+				
+		});
+				//-------------个人中心--------------
+		$('#login').mouseenter(function(){
+			$('.login-tip').show();
+		});
+		$('#login').mouseleave(function(){
+			$('.login-tip').hide();
+		});
+	</script>
+</html>
